@@ -8,7 +8,11 @@ import axios from 'axios';
 
 class Blog extends Component {
     state = {
-        posts: []
+        posts: [],
+        selectedPostId: null,
+    }
+    clickHandler = (id) => {
+        this.setState({ selectedPostId: id })
     }
     componentDidMount() {
         axios.get("https://jsonplaceholder.typicode.com/posts").then(
@@ -20,7 +24,7 @@ class Blog extends Component {
     }
     render() {
         const posts = this.state.posts.map(post => {
-            return <Post key={response.id} post={post} />
+            return <Post key={post.id} post={post} clickHandler={this.clickHandler} />
         })
         return (
             <div>
@@ -28,7 +32,7 @@ class Blog extends Component {
                     {posts}
                 </section>
                 <section>
-                    <FullPost />
+                    <FullPost id={this.state.selectedPostId} />
                 </section>
                 <section>
                     <NewPost />
