@@ -6,11 +6,6 @@
     margin: auto;
 }
 
-.NavigationWrapper {
-    width: 100%;
-    border: 1px solid black;
-}
-
 .Navigation {
     text-align: center;
 }
@@ -18,4 +13,15 @@
 .Navigation li {
     display: inline;
     padding: 10px;
+}
+
+.Navigation a {
+    text-decoration: none;
+    color: black;
+}
+
+.Navigation a:active,
+.Navigation a:hover,
+.Navigation a.active {
+    color: orange;
 }

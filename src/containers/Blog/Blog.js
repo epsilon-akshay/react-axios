@@ -1,48 +1,23 @@
 import React, { Component } from 'react';
-
-import Post from '../../components/Post/Post';
-import FullPost from '../../components/FullPost/FullPost';
-import NewPost from '../../components/NewPost/NewPost';
+import { Route, NavLink } from 'react-router-dom'
+import Posts from './Posts/Posts';
 import './Blog.css';
-import axios from 'axios';
+import NewPost from './NewPost/NewPost';
 
 class Blog extends Component {
-    state = {
-        posts: [],
-        selectedPostId: null,
-    }
-    clickHandler = (id) => {
-        this.setState({ selectedPostId: id })
-    }
-    componentDidMount() {
-        axios.get("https://jsonplaceholder.typicode.com/posts").then(
-            (response) => {
-                console.log(response.data)
-                this.setState({ posts: response.data })
-            }
-        )
-    }
+
     render() {
-        const posts = this.state.posts.map(post => {
-            return <Post key={post.id} post={post} clickHandler={this.clickHandler} />
-        })
+
         return (
             <div>
                 <nav className="NavigationWrapper">
                     <ul className="Navigation">
-                        <li >Home</li>
-                        <li >Posts</li>
+                        <li> <NavLink exact to="/">Home</NavLink></li>
+                        <li ><NavLink to={{ pathname: "/new-post" }}>Post</NavLink></li>
                     </ul>
                 </nav>
-                <section className="Posts">
-                    {posts}
-                </section>
-                <section>
-                    <FullPost id={this.state.selectedPostId} />
-                </section>
-                <section>
-                    <NewPost />
-                </section>
+                <Route path="/" exact='true' component={Posts} />
+                <Route path="/new-post" exact='true' component={NewPost} />
             </div>
         );
     }
