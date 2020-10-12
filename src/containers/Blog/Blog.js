@@ -28,6 +28,12 @@ class Blog extends Component {
         })
         return (
             <div>
+                <nav className="NavigationWrapper">
+                    <ul className="Navigation">
+                        <li >Home</li>
+                        <li >Posts</li>
+                    </ul>
+                </nav>
                 <section className="Posts">
                     {posts}
                 </section>

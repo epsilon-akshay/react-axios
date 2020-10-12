@@ -5,3 +5,17 @@
     width: 80%;
     margin: auto;
 }
+
+.NavigationWrapper {
+    width: 100%;
+    border: 1px solid black;
+}
+
+.Navigation {
+    text-align: center;
+}
+
+.Navigation li {
+    display: inline;
+    padding: 10px;
+}
